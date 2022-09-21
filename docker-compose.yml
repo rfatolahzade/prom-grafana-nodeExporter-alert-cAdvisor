@@ -1,16 +1,8 @@
 version: '3.7'
 
-volumes:
-    prometheus_data: {}
-    grafana_data: {}
-
-networks:
-  front-tier:
-  back-tier:
-
 services:
   prometheus:
-    image: prom/prometheus:v2.36.2
+    image: prom/prometheus:v2.38.0
     volumes:
       - ./prometheus/:/etc/prometheus/
       - prometheus_data:/prometheus
@@ -42,3 +34,11 @@ services:
       - back-tier
       - front-tier
     restart: always
+
+volumes:
+    prometheus_data: {}
+    grafana_data: {}
+
+networks:
+  front-tier:
+  back-tier:
